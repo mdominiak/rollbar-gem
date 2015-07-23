@@ -26,7 +26,7 @@ module Rollbar
       session = rollbar_filtered_params(sensitive_params, env['rack.session.options'])
       route_params = rollbar_filtered_params(sensitive_params, rollbar_route_params(env))
 
-      params = request_params.merge(get_params).merge(post_params).merge(raw_body_params)
+      params = get_params.merge(post_params).merge(raw_body_params).merge(request_params)
 
       data = {
         :params => params,
